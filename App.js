@@ -4,39 +4,47 @@ import * as ImagePicker from 'expo-image-picker';
 
 export default function App() {
 
+  
   const kamerayiAc = async () => {
+    
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
     if (status !== 'granted') {
-      Alert.alert('Kamera izni gerekli');
+      Alert.alert('Kamera izni gerekli'); 
       return;
     }
 
+    
     const result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, 
+      allowsEditing: true, 
+      aspect: [4, 3], 
+      quality: 1, 
     });
 
+    
     if (!result.cancelled) {
       Alert.alert('Fotoğraf çekildi', 'Fotoğraf URI: ' + result.uri);
     }
   };
 
+  
   const galeriyiAc = async () => {
+    
     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (status !== 'granted') {
-      Alert.alert('Galeri izni gerekli');
+      Alert.alert('Galeri izni gerekli'); 
       return;
     }
 
+    
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images, 
+      allowsEditing: true, 
+      aspect: [4, 3], 
+      quality: 1, 
     });
 
+   
     if (!result.cancelled) {
       Alert.alert('Fotoğraf seçildi', 'Fotoğraf URI: ' + result.uri);
     }
@@ -67,7 +75,7 @@ export default function App() {
           <Text style={styles.optionText}>Kamera</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionButton} onPress={galeriyiAc}>
-          <Text style={styles.optionText}>Klasörden Seçme</Text>
+          <Text style={styles.optionText}>Galeriden Seçme</Text>
         </TouchableOpacity>
       </View>
     </View>
